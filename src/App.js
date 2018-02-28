@@ -39,11 +39,12 @@ class App extends Component {
   togglePersonsHandler = () => {
     const doesShow = this.state.showPersons;
     this.setState({showPersons: !doesShow});
-  } 
+  }
 
   render() {
     const style = {
-      backgroundColor: 'white',
+      backgroundColor: 'green',
+      color: '#fff',
       font: 'inherit',
       border: '1px solid #000',
       padding: '10px',
@@ -65,13 +66,22 @@ class App extends Component {
           })}
         </div>
       );
+
+      style.backgroundColor = 'red';
     }
 
+    const classes = [];
+    if (this.state.persons.length <= 2) {
+      classes.push('red');
+    }
+    if (this.state.persons.length <= 1) {
+      classes.push('bold');
+    }
 
     return (
       <div className="App">
         <h1>Hi, I´m a React App!</h1>
-        <p>Esto es JSX por eso puedo escribirlo como HTML5 dentro de un archivo JS</p>
+        <p className={classes.join(' ')}>Esto es JSX por eso puedo escribirlo como HTML5 dentro de un archivo JS</p>
         <button 
           style={style}
           onClick={this.togglePersonsHandler}>Change Name</button>
