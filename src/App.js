@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Radium, {StyleRoot} from 'radium';
 import Person from './Person/Person';
 
 class App extends Component {
@@ -48,7 +49,11 @@ class App extends Component {
       font: 'inherit',
       border: '1px solid #000',
       padding: '10px',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      ':hover': {
+        backgroundColor: 'lightgreen',
+        color: 'black'
+      }
     };
 
     let persons = null;
@@ -68,6 +73,10 @@ class App extends Component {
       );
 
       style.backgroundColor = 'red';
+      style[':hover'] = {
+        backgroundColor: 'salmon',
+        color: 'black'
+      }
     }
 
     const classes = [];
@@ -79,16 +88,18 @@ class App extends Component {
     }
 
     return (
-      <div className="App">
-        <h1>Hi, I´m a React App!</h1>
-        <p className={classes.join(' ')}>Esto es JSX por eso puedo escribirlo como HTML5 dentro de un archivo JS</p>
-        <button 
-          style={style}
-          onClick={this.togglePersonsHandler}>Change Name</button>
-        {persons}
-      </div>
+      <StyleRoot>
+        <div className="App">
+          <h1>Hi, I´m a React App!</h1>
+          <p className={classes.join(' ')}>Esto es JSX por eso puedo escribirlo como HTML5 dentro de un archivo JS</p>
+          <button 
+            style={style}
+            onClick={this.togglePersonsHandler}>Change Name</button>
+          {persons}
+        </div>
+      </StyleRoot>
     );
   }
 }
 
-export default App;
+export default Radium(App);
