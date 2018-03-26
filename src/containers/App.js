@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
-import Person from './Person/Person';
+import classes from './App.css';
+import Person from '../components/Persons/Person/Person';
 
 class App extends Component {
   state = {
@@ -70,18 +70,18 @@ class App extends Component {
       style.backgroundColor = 'red';
     }
 
-    const classes = [];
+    const assignedClasses = [];
     if (this.state.persons.length <= 2) {
-      classes.push('red');
+      assignedClasses.push(classes.red);
     }
     if (this.state.persons.length <= 1) {
-      classes.push('bold');
+      assignedClasses.push(classes.bold);
     }
 
     return (
-        <div className="App">
+        <div className={classes.App}>
           <h1>Hi, I´m a React App!</h1>
-          <p className={classes.join(' ')}>Esto es JSX por eso puedo escribirlo como HTML5 dentro de un archivo JS</p>
+          <p className={assignedClasses.join(' ')}>Esto es JSX por eso puedo escribirlo como HTML5 dentro de un archivo JS</p>
           <button 
             style={style}
             onClick={this.togglePersonsHandler}>Change Name</button>
