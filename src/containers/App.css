@@ -9,20 +9,3 @@ body{
 	background-color: #fff;
 }
 
-button{
-	display: block;
-	margin: auto;
-}
-
-input{
-	width: 80%;
-	padding: 10px;
-}
-
-.red {
-	color: red;
-}
-
-.bold {
-	font-weight: bold;
-}
